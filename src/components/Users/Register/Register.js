@@ -7,8 +7,8 @@ import { registerUserAction } from "../../../redux/slices/users/usersSlices";
 
 //Form schema
 const formSchema = Yup.object({
-  firstName: Yup.string().required("First Name is required"),
-  lastName: Yup.string().required("Last Name is required"),
+  firstname: Yup.string().required("First Name is required"),
+  lastname: Yup.string().required("Last Name is required"),
   email: Yup.string().required("Email is required"),
   password: Yup.string().required("Password is required"),
 });
@@ -22,15 +22,15 @@ const Register = () => {
   //formik
   const formik = useFormik({
     initialValues: {
-      firstName: "",
-      lastName: "",
+      firstname: "",
+      lastname: "",
       email: "",
       password: "",
     },
     onSubmit: values => {
       //dispath the action
       dispatch(registerUserAction(values));
-      console.log(values);
+      console.log("register :",values);
     },
     validationSchema: formSchema,
   });
@@ -113,9 +113,9 @@ const Register = () => {
                       </svg>
                     </span>
                     <input
-                      value={formik.values.firstName}
-                      onChange={formik.handleChange("firstName")}
-                      onBlur={formik.handleBlur("firstName")}
+                      value={formik.values.firstname}
+                      onChange={formik.handleChange("firstname")}
+                      onBlur={formik.handleBlur("firstname")}
                       className="w-full pl-4 pr-6 py-4 font-bold placeholder-gray-300 rounded-r-full focus:outline-none"
                       type="firstName"
                       placeholder="First Name"
@@ -123,7 +123,7 @@ const Register = () => {
                   </div>
                   {/* Err msg*/}
                   <div className="text-red-400 mb-2">
-                    {formik.touched.firstName && formik.errors.firstName}
+                    {formik.touched.firstname && formik.errors.firstname}
                   </div>
                   {/* Last name */}
                   <div className="flex items-center pl-6 mb-3 bg-white rounded-full">
@@ -166,9 +166,9 @@ const Register = () => {
                       </svg>
                     </span>
                     <input
-                      value={formik.values.lastName}
-                      onChange={formik.handleChange("lastName")}
-                      onBlur={formik.handleBlur("lastName")}
+                      value={formik.values.lastname}
+                      onChange={formik.handleChange("lastname")}
+                      onBlur={formik.handleBlur("lastname")}
                       className="w-full pl-4 pr-6 py-4 font-bold placeholder-gray-300 rounded-r-full focus:outline-none"
                       type="lastName"
                       placeholder="Last Name"
@@ -176,7 +176,7 @@ const Register = () => {
                   </div>
                   {/* Err msg*/}
                   <div className="text-red-400 mb-2">
-                    {formik.touched.lastName && formik.errors.lastName}
+                    {formik.touched.lastname && formik.errors.lastname}
                   </div>
                   {/* Email */}
                   <div className="flex items-center pl-6 mb-3 bg-white rounded-full">

@@ -10,8 +10,8 @@ import {
 
 //Form schema
 const formSchema = Yup.object({
-  firstName: Yup.string().required("First Name is required"),
-  lastName: Yup.string().required("Last Name is required"),
+  firstname: Yup.string().required("First Name is required"),
+  lastname: Yup.string().required("Last Name is required"),
   email: Yup.string().required("Email is required"),
   bio: Yup.string().required("Bio is required"),
 });
@@ -35,8 +35,8 @@ const UpdateProfileForm = ({
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
-      firstName: userDetails?.firstName,
-      lastName: userDetails?.lastName,
+      firstname: userDetails?.firstname,
+      lastname: userDetails?.lastname,
       email: userDetails?.email,
       bio: userDetails?.bio,
     },
@@ -56,7 +56,7 @@ const UpdateProfileForm = ({
         <h3 className="mt-6 text-center text-2xl font-extrabold text-gray-300">
           Hei buddy{" "}
           <span className="text-green-300">
-            {userDetails?.firstName} {userDetails?.lastName}
+            {userDetails?.firstname} {userDetails?.lastname}
           </span>{" "}
           Do want to update your profile?
         </h3>
@@ -92,7 +92,7 @@ const UpdateProfileForm = ({
                 />
               </div>
               <div className="text-red-500">
-                {formik.touched.firstName && formik.errors.firstName}
+                {formik.touched.firstname && formik.errors.firstname}
               </div>
             </div>
             <div>
@@ -105,9 +105,9 @@ const UpdateProfileForm = ({
               <div className="mt-1">
                 {/* Last Name */}
                 <input
-                  value={formik.values.lastName}
-                  onChange={formik.handleChange("lastName")}
-                  onBlur={formik.handleBlur("lastName")}
+                  value={formik.values.lastname}
+                  onChange={formik.handleChange("lastname")}
+                  onBlur={formik.handleBlur("lastname")}
                   id="lastName"
                   name="lastName"
                   type="text"
@@ -117,7 +117,7 @@ const UpdateProfileForm = ({
               </div>
               {/* Err msg */}
               <div className="text-red-500">
-                {formik.touched.lastName && formik.errors.lastName}
+                {formik.touched.firstname && formik.errors.lastname}
               </div>
             </div>
             <div>

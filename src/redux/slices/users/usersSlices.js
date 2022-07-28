@@ -65,6 +65,7 @@ export const userProfileAction = createAsyncThunk(
   "user/profile",
   async (id, { rejectWithValue, getState, dispatch }) => {
     //get user token
+    console.log("profile enter",id);
     const user = getState()?.users;
     const { userAuth } = user;
     const config = {
@@ -78,6 +79,7 @@ export const userProfileAction = createAsyncThunk(
         `${baseUrl}/api/users/profile/${id}`,
         config
       );
+      console.log("profile data : ",data);
       return data;
     } catch (error) {
       if (!error?.response) {
@@ -163,8 +165,8 @@ export const updateUserAction = createAsyncThunk(
       const { data } = await axios.put(
         `${baseUrl}/api/users`,
         {
-          lastName: userData?.lastName,
-          firstName: userData?.firstName,
+          lastname: userData?.lastname,
+          firstname: userData?.firstname,
           bio: userData?.bio,
           email: userData?.email,
         },
@@ -303,11 +305,17 @@ export const uploadProfilePhototAction = createAsyncThunk(
 
       formData.append("image", userImg?.image);
 
+      console.log("damaçsdmöa");
+
       const { data } = await axios.put(
         `${baseUrl}/api/users/profilephoto-upload`,
         formData,
         config
       );
+
+      console.log("amkldasd");
+
+      console.log("data upload",data)
       return data;
     } catch (error) {
       if (!error?.response) throw error;

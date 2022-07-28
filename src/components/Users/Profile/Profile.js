@@ -34,6 +34,7 @@ export default function Profile(props) {
     userAuth,
   } = users;
 
+
   //fetch user profile
   useEffect(() => {
     dispatch(userProfileAction(id));
@@ -56,7 +57,7 @@ export default function Profile(props) {
 
   return (
     <>
-      <div className="min-h-screen bg-green-600 flex justify-center items-center">
+      <div className="min-h-screen bg-green-600 flex justify-center items-center" >
         {profileLoading ? (
           <LoadingComponent />
         ) : profileAppErr || profileServerErr ? (
@@ -67,8 +68,8 @@ export default function Profile(props) {
           <div className="h-screen flex overflow-hidden bg-white">
             {/* Static sidebar for desktop */}
 
-            <div className="flex flex-col min-w-0 flex-1 overflow-hidden">
-              <div className="flex-1 relative z-0 flex overflow-hidden">
+            <div className="flex flex-col min-w-0 flex-1 overflow-hidden" style={{width: '800px'}} >
+              <div className="flex-1 relative z-0 flex overflow-hidden" >
                 <main className="flex-1 relative z-0 overflow-y-auto focus:outline-none xl:order-last">
                   <article>
                     {/* Profile header */}
@@ -77,7 +78,7 @@ export default function Profile(props) {
                         <img
                           className="h-32 w-full object-cover lg:h-48"
                           src={profile?.profilePhoto}
-                          alt={profile?.firstName}
+                          alt={profile?.firstname}
                         />
                       </div>
                       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -86,18 +87,18 @@ export default function Profile(props) {
                             <img
                               className="h-24 w-24 rounded-full  ring-4 ring-white sm:h-32 sm:w-32"
                               src={profile?.profilePhoto}
-                              alt={profile?.firstName}
+                              alt={profile?.firstname}
                             />
                           </div>
                           <div className="mt-6 sm:flex-1 sm:min-w-0 sm:flex sm:items-center sm:justify-end sm:space-x-6 sm:pb-1">
                             <div className=" flex flex-col 2xl:block mt-10 min-w-0 flex-1">
                               <h1 className="text-2xl font-bold text-gray-900 ">
-                                {profile?.firstName} {profile?.lastName}
+                                {profile?.firstname} {profile?.lastname}
                                 <span className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800">
                                   {profile?.accountType}
                                 </span>
                                 {/* Display if verified or not */}
-                                {profile?.isAccountVerified ? (
+                                {/* {profile?.isAccountVerified ? (
                                   <span className="inline-flex ml-2 items-center px-3 py-0.5  rounded-lg text-sm font-medium bg-green-600 text-gray-300">
                                     Account Verified
                                   </span>
@@ -105,7 +106,7 @@ export default function Profile(props) {
                                   <span className="inline-flex ml-2 items-center px-3 py-0.5  rounded-lg text-sm font-medium bg-red-600 text-gray-300">
                                     Unverified Account
                                   </span>
-                                )}
+                                )} */}
                               </h1>
                               <p className="m-3 text-lg">
                                 Date Joined: {""}
@@ -200,24 +201,12 @@ export default function Profile(props) {
                                 )}
                               </>
                               {/* Send Mail */}
-                              <button
-                                onClick={sendMailNavigate}
-                                className="inline-flex justify-center bg-indigo-900 px-4 py-2 border border-yellow-700 shadow-sm text-sm font-medium rounded-md text-gray-700  hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
-                              >
-                                <MailIcon
-                                  className="-ml-1 mr-2 h-5 w-5 text-gray-200"
-                                  aria-hidden="true"
-                                />
-                                <span className="text-base mr-2  text-bold text-yellow-500">
-                                  Send Message
-                                </span>
-                              </button>
                             </div>
                           </div>
                         </div>
                         <div className="hidden sm:block 2xl:hidden mt-6 min-w-0 flex-1">
                           <h1 className="text-2xl font-bold text-gray-900 truncate">
-                            {profile?.firstName} {profile?.lastName}
+                            {profile?.firstname} {profile?.lastname}
                           </h1>
                         </div>
                       </div>
@@ -229,40 +218,6 @@ export default function Profile(props) {
                       </div>
                     </div>
                     <div className="flex justify-center place-items-start flex-wrap  md:mb-0">
-                      <div className="w-full md:w-1/3 px-4 mb-4 md:mb-0">
-                        <h1 className="text-center text-xl border-gray-500 mb-2 border-b-2">
-                          Who viewed my profile : {profile?.viewedBy?.length}
-                        </h1>
-
-                        {/* Who view my post */}
-                        <ul className="">
-                          {profile?.viewedBy?.length <= 0 ? (
-                            <h1>No Viewer</h1>
-                          ) : (
-                            profile?.viewedBy?.map(user => (
-                              <li>
-                                <Link>
-                                  <div className="flex mb-2 items-center space-x-4 lg:space-x-6">
-                                    <img
-                                      className="w-16 h-16 rounded-full lg:w-20 lg:h-20"
-                                      src={user?.profilePhoto}
-                                      alt={user?.firstName}
-                                    />
-                                    <div className="font-medium text-lg leading-6 space-y-1">
-                                      <h3>
-                                        {user?.firstName} {user?.lastName}
-                                      </h3>
-                                      <p className="text-indigo-600">
-                                        {user?.accountType}
-                                      </p>
-                                    </div>
-                                  </div>
-                                </Link>
-                              </li>
-                            ))
-                          )}
-                        </ul>
-                      </div>
                       {/* All my Post */}
                       <div className="w-full md:w-2/3 px-4 mb-4 md:mb-0">
                         <h1 className="text-center text-xl border-gray-500 mb-2 border-b-2">
@@ -273,7 +228,7 @@ export default function Profile(props) {
                           <h2 className="text-center text-xl">No Post Found</h2>
                         ) : (
                           profile?.posts?.map(post => (
-                            <div className="flex flex-wrap  -mx-3 mt-3  lg:mb-6">
+                            <div className="flex flex-wrap  -mx-3 mt-3  lg:mb-12">
                               <div className="mb-2   w-full lg:w-1/4 px-3">
                                 <Link>
                                   <img

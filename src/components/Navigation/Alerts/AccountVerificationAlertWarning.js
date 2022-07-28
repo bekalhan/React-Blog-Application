@@ -6,7 +6,7 @@ export default function AccountVerificationAlertWarning() {
   const dispatch = useDispatch();
   return (
     <div className="bg-red-500 border-l-4 border-yellow-400 p-1">
-      <div className="flex">
+      {/* <div className="flex">
         <div className="flex-shrink-0">
           <ExclamationIcon
             className="h-5 w-5 text-yellow-500"
@@ -24,7 +24,7 @@ export default function AccountVerificationAlertWarning() {
             </button>
           </p>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

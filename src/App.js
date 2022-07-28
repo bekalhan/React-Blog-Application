@@ -37,11 +37,11 @@ function App() {
           component={UploadProfilePhoto}
         />
 
-        <PrivateProtectRoute
+        {/* <PrivateProtectRoute
           exact
           path="/verify-account/:token"
           component={AccountVerified}
-        />
+        /> */}
         <PrivateProtectRoute exact path="/send-mail" component={SendEmail} />
         <PrivateProtectRoute
           exact

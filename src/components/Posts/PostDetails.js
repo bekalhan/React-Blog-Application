@@ -32,9 +32,9 @@ const PostDetails = ({
   //Get login user
   const user = useSelector(state => state.users);
   const { userAuth } = user;
-  console.log("post details : ",postDetails);
+  const isAdmin = userAuth?.isAdmin;
   const isCreatedBy = postDetails?.user?._id === userAuth?._id;
-  console.log(isCreatedBy);
+
   //redirect
   if (isDeleted) return <Redirect to="/posts" />;
   return (
@@ -86,7 +86,7 @@ const PostDetails = ({
                   {postDetails?.description}
 
                   {/* Show delete and update  if it was created by the user */}
-                  {isCreatedBy ? (
+                  {isCreatedBy  || isAdmin ? (
                     <p class="flex">
                       <Link to={`/update-post/${postDetails?._id}`} class="p-3">
                         <PencilAltIcon class="h-8 mt-3 text-yellow-300" />
