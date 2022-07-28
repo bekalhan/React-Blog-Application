@@ -23,7 +23,6 @@ const UsersListItem = user => {
     });
   };
 
-  console.log("user : ",user);
 
   return (
     <>

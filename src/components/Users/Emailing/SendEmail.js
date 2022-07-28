@@ -29,7 +29,6 @@ const SendEmail = ({ location: { state } }) => {
   //select data from store
   const sendMail = useSelector(state => state?.sendMail);
   const { mailSent, loading, appErr, serverErr, isMailSent } = sendMail;
-  console.log(isMailSent);
   //redirect
   if (isMailSent) return <Redirect to={`/profile/${state?.id}`} />;
   return (

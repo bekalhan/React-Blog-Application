@@ -17,7 +17,6 @@ const UsersList = () => {
     dispatch(fetchUsersAction());
   }, [block, unblock]);
 
-  console.log("enter");
 
   return (
     <>

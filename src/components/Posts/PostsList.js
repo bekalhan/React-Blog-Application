@@ -15,7 +15,6 @@ export default function PostsList() {
   //select post from store
   const post = useSelector(state => state?.post);
   const { postLists, loading, appErr, serverErr, likes, dislikes } = post;
-  console.log(postLists);
   //select categories from store
   const category = useSelector(state => state?.category);
   const {
@@ -168,7 +167,7 @@ export default function PostsList() {
                             {post?.title}
                           </h3>
                         </Link>
-                        <p className="text-gray-300">{post?.description}</p>
+                        <p className="text-gray-300">{post?.description.substring(0, post?.description.length-(post?.description.length-500))}...</p>
                         {/* Read more */}
                         <Link
                           to={`/posts/${post?._id}`}

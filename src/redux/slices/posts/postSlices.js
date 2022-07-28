@@ -12,7 +12,6 @@ const resetPostDelete = createAction("post/delete");
 export const createpostAction = createAsyncThunk(
   "post/created",
   async (post, { rejectWithValue, getState, dispatch }) => {
-    // console.log(post);
     //get user token
     const user = getState()?.users;
     const { userAuth } = user;
@@ -48,7 +47,6 @@ export const createpostAction = createAsyncThunk(
 export const updatePostAction = createAsyncThunk(
   "post/updated",
   async (post, { rejectWithValue, getState, dispatch }) => {
-    console.log(post);
     //get user token
     const user = getState()?.users;
     const { userAuth } = user;
@@ -90,6 +88,7 @@ export const deletePostAction = createAsyncThunk(
       //http call
       const { data } = await axios.delete(
         `${baseUrl}/api/posts/${postId}`,
+
         config
       );
       //dispatch

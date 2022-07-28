@@ -30,7 +30,6 @@ const Register = () => {
     onSubmit: values => {
       //dispath the action
       dispatch(registerUserAction(values));
-      console.log("register :",values);
     },
     validationSchema: formSchema,
   });

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 import poster from "../../../img/poster.png";
 import { loginUserAction } from "../../../redux/slices/users/usersSlices";
+import {Box,Typography} from '@mui/material';
 
 //Form schema
 const formSchema = Yup.object({
@@ -54,9 +55,11 @@ const Login = () => {
                     </h3>
                     {/* display err */}
                     {serverErr || appErr ? (
-                      <h2 className="text-red-500">
-                        {serverErr} - {appErr}
-                      </h2>
+                      <Box>
+                        <Typography sx={{color:"red",marginBottom:"2em",marginLeft:"1em"}}>
+                              {appErr} - {serverErr}
+                        </Typography>
+                      </Box>
                     ) : null}
                     <div className="flex items-center pl-6 mb-3 border border-gray-50 bg-white rounded-full">
                       <span className="inline-block pr-3 border-r border-gray-50">

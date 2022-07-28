@@ -13,12 +13,10 @@ const Navbar = () => {
   const { userAuth, profile } = state;
   const isAdmin = userAuth?.isAdmin;
 
-  console.log("account : ",userAuth);
 
   //account verification
   const account = useSelector(state => state?.accountVerification);
   const { loading, appErr, serverErr, token } = account;
-  console.log("userAuth: ",userAuth);
   return (
     <>
       {isAdmin ? (
